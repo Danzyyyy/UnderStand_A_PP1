@@ -26,7 +26,7 @@ public class Main {
             System.out.println("0. Keluar");
             System.out.print("Pilih menu: ");
 
-            pilih = Integer.parseInt(scanner.nextLine());
+            pilih = InputHelper.inputInt("Pilih menu: ");
 
             switch (pilih) {
                 case 1 -> tambahTiketTail();

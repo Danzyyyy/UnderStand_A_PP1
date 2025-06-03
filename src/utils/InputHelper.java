@@ -12,16 +12,24 @@ public class InputHelper {
     public static String inputTanggal(String prompt) {
         sdf.setLenient(false);
         while (true) {
-            System.out.print(prompt + " (format: dd-MM-yyyy, Contoh: 25-12-2025): ");
+            System.out.print(prompt + " (format: tanggal-bulan-tahun, Contoh: 03-01-2025): ");
             String input = scanner.nextLine();
             try {
                 Date date = sdf.parse(input);
+                Date today = sdf.parse(sdf.format(new Date()));
+
+                if (date.before(today)) {
+                    System.out.println("Tanggal tidak boleh sebelum hari ini. Coba lagi.");
+                    continue;
+                }
+
                 return sdf.format(date);
             } catch (ParseException e) {
                 System.out.println("Format tidak valid. Coba lagi.");
             }
         }
     }
+
 
     public static String inputString(String prompt) {
         while (true) {
