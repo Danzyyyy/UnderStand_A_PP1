@@ -1,6 +1,6 @@
 import entity.Tiket;
 import services.ListStructure;
-import utils.DateHelper;
+import utils.InputHelper;
 import utils.RuteHelper;
 
 import java.util.Scanner;
@@ -61,7 +61,7 @@ public class Main {
         System.out.print("Masukkan nama penumpang: ");
         String nama = scanner.nextLine();
         String rute = RuteHelper.pilihRute();
-        String tanggal = DateHelper.inputTanggal("Masukkan tanggal keberangkatan");
+        String tanggal = InputHelper.inputTanggal("Masukkan tanggal keberangkatan");
         return new Tiket(nama, rute, tanggal);
     }
 
@@ -86,7 +86,7 @@ public class Main {
         System.out.print("Masukkan ID tiket yang ingin diupdate: ");
         String id = scanner.nextLine();
         String rute = RuteHelper.pilihRute();
-        String tanggal = DateHelper.inputTanggal("Masukkan tanggal keberangkatan baru");
+        String tanggal = InputHelper.inputTanggal("Masukkan tanggal keberangkatan baru");
         list.updateById(id, rute, tanggal);
     }
 }
