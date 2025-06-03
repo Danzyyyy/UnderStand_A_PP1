@@ -1,6 +1,7 @@
 import entity.Tiket;
 import services.ListStructure;
 import utils.InputHelper;
+import utils.MainHelper;
 import utils.RuteHelper;
 
 import java.util.Scanner;
@@ -12,20 +13,8 @@ public class Main {
     public static void main(String[] args) {
         int pilih;
         do {
-            System.out.println("\n=== MENU PEMESANAN TIKET TRAVEL ===");
-            System.out.println("1. Tambah Tiket (Tail)");
-            System.out.println("2. Tambah Tiket (Head)");
-            System.out.println("3. Tambah Tiket (Mid)");
-            System.out.println("4. Hapus Tiket (Head)");
-            System.out.println("5. Hapus Tiket (Tail)");
-            System.out.println("6. Hapus Tiket (Mid)");
-            System.out.println("7. Cari Tiket (berdasarkan ID)");
-            System.out.println("8. Update Tiket (berdasarkan ID)");
-            System.out.println("9. Hapus Tiket (berdasarkan ID)");
-            System.out.println("10. Tampilkan Semua Tiket");
-            System.out.println("0. Keluar");
-            System.out.print("Pilih menu: ");
 
+            pilih = MainHelper.menuPilih();
             pilih = InputHelper.inputInt("Pilih menu: ");
 
             switch (pilih) {
