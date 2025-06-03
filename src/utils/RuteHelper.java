@@ -31,7 +31,7 @@ public class RuteHelper {
                     return ruteList.get(input - 1);
                 }
             } catch (NumberFormatException e) {}
-            System.out.println("Pilihan tidak valid.");
+            System.out.println("Pilihan tidak validd.");
         }
     }
 }
