@@ -74,4 +74,71 @@ public class ListStructure {
             curNode.setNext(curNode.getNext().getNext());
         }
     }
+
+    public void deleteById(String id) {
+        Node curNode = head, prev = null;
+        while (curNode != null) {
+            if (curNode.getData().getId().equals(id)) {
+                if (prev == null) {
+                    head = curNode.getNext();
+                } else {
+                    prev.setNext(curNode.getNext());
+                }
+                System.out.println("Tiket dengan ID " + id + " berhasil dihapus.");
+                return;
+            }
+            prev = curNode;
+            curNode = curNode.getNext();
+        }
+        System.out.println("Tiket tidak ditemukan.");
+    }
+
+    public void searchById(String id) {
+        Node curNode = head;
+        while (curNode != null) {
+            if (curNode.getData().getId().equals(id)) {
+                System.out.println("\nTiket ditemukan:");
+                tampilkanTiket(curNode.getData());
+                return;
+            }
+            curNode = curNode.getNext();
+        }
+        System.out.println("Tiket tidak ditemukan.");
+    }
+
+    public void updateById(String id, String rute, String tanggal) {
+        Node curNode = head;
+        while (curNode != null) {
+            if (curNode.getData().getId().equals(id)) {
+                curNode.getData().setRute(rute);
+                curNode.getData().setTanggal(tanggal);
+                System.out.println("Tiket berhasil diupdate.");
+                return;
+            }
+            curNode = curNode.getNext();
+        }
+        System.out.println("Tiket tidak ditemukan.");
+    }
+
+    public void tampilkanSemua() {
+        Node curNode = head;
+        if (curNode == null) {
+            System.out.println("Belum ada tiket yang dipesan.");
+            return;
+        }
+
+        System.out.println("\nDaftar Tiket:");
+        while (curNode != null) {
+            tampilkanTiket(curNode.getData());
+            curNode = curNode.getNext();
+        }
+    }
+
+    private void tampilkanTiket(Tiket tiket) {
+        System.out.println("------------------------------");
+        System.out.println("ID Tiket : " + tiket.getId());
+        System.out.println("Nama     : " + tiket.getNama());
+        System.out.println("Rute     : " + tiket.getRute());
+        System.out.println("Tanggal  : " + tiket.getTanggal());
+    }
 }
