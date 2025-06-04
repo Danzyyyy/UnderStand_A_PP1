@@ -17,7 +17,7 @@ public class Main {
             pilih = MainHelper.menuPilih();
 
             switch (pilih) {
-                case 1 -> tambahTiketTail();
+                case 1 -> MainHelper.tambahTiketTail(list);
                 case 2 -> tambahTiketHead();
                 case 3 -> tambahTiketMid();
                 case 4 -> list.removeHead();
@@ -47,10 +47,7 @@ public class Main {
 
 
 
-    private static void tambahTiketTail() {
-        list.insertTail(MainHelper.inputTiketBaru());
-        System.out.println("Tiket berhasil ditambahkan (Tail)!");
-    }
+
 
     private static void tambahTiketHead() {
         list.insertHead(MainHelper.inputTiketBaru());
