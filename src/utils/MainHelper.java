@@ -40,7 +40,7 @@ public class MainHelper {
 
     /* ---------- TAMBAH TIKET ---------- */
 
-    private static void tambahTiketTail(ListStructure list) {
+    public static void tambahTiketTail(ListStructure list) {
         list.insertTail(inputTiketBaru());
         System.out.println("Tiket berhasil ditambahkan (Tail)!");
     }
