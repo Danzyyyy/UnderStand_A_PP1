@@ -45,5 +45,10 @@ public class MainHelper {
         System.out.println("Tiket berhasil ditambahkan (Tail)!");
     }
 
+    public static void tambahTiketHead(ListStructure list) {
+        list.insertHead(inputTiketBaru());
+        System.out.println("Tiket berhasil ditambahkan (Head)!");
+    }
+
 
 }
