@@ -31,7 +31,7 @@ public class MainHelper {
 
     /* ---------- INPUT TIKET BARU ---------- */
     public static Tiket inputTiketBaru() {
-        String nama   = InputHelper.inputString("Masukan nama penumpang");
+        String nama   = InputHelper.inputString("Masukan nama penumpang: ");
         String rute   = RuteHelper.pilihRute();
         String tanggal = InputHelper.inputTanggal("Masukkan tanggal keberangkatan");
 
@@ -50,5 +50,9 @@ public class MainHelper {
         System.out.println("Tiket berhasil ditambahkan (Head)!");
     }
 
-
+    public static void tambahTiketMid(ListStructure list) {
+        int pos = InputHelper.inputInt("Masukkan posisi penyisipan: ");
+        list.insertMid(inputTiketBaru(), pos);
+        System.out.println("Tiket berhasil ditambahkan (Mid)!");
+    }
 }
