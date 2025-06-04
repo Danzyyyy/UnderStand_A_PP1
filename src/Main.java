@@ -15,7 +15,6 @@ public class Main {
         do {
 
             pilih = MainHelper.menuPilih();
-            pilih = InputHelper.inputInt("Pilih menu: ");
 
             switch (pilih) {
                 case 1 -> tambahTiketTail();
@@ -46,28 +45,22 @@ public class Main {
         } while (pilih != 0);
     }
 
-    private static Tiket inputTiketBaru() {
-        System.out.print("Masukkan nama penumpang: ");
-        String nama = scanner.nextLine();
-        String rute = RuteHelper.pilihRute();
-        String tanggal = InputHelper.inputTanggal("Masukkan tanggal keberangkatan");
-        return new Tiket(nama, rute, tanggal);
-    }
+
 
     private static void tambahTiketTail() {
-        list.insertTail(inputTiketBaru());
+        list.insertTail(MainHelper.inputTiketBaru());
         System.out.println("Tiket berhasil ditambahkan (Tail)!");
     }
 
     private static void tambahTiketHead() {
-        list.insertHead(inputTiketBaru());
+        list.insertHead(MainHelper.inputTiketBaru());
         System.out.println("Tiket berhasil ditambahkan (Head)!");
     }
 
     private static void tambahTiketMid() {
         System.out.print("Masukkan posisi penyisipan: ");
         int pos = Integer.parseInt(scanner.nextLine());
-        list.insertMid(inputTiketBaru(), pos);
+        list.insertMid(MainHelper.inputTiketBaru(), pos);
         System.out.println("Tiket berhasil ditambahkan (Mid)!");
     }
 
