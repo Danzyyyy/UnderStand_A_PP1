@@ -39,7 +39,6 @@ public class MainHelper {
     }
 
     /* ---------- TAMBAH TIKET ---------- */
-
     public static void tambahTiketTail(ListStructure list) {
         list.insertTail(inputTiketBaru());
         System.out.println("Tiket berhasil ditambahkan (Tail)!");
@@ -61,5 +60,7 @@ public class MainHelper {
         String rute = RuteHelper.pilihRute();
         String tanggal = InputHelper.inputTanggal("Masukkan tanggal keberangkatan baru");
         list.updateById(id, rute, tanggal);
+
+
     }
 }
