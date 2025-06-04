@@ -4,6 +4,8 @@ import entity.Tiket;
 import services.ListStructure;
 
 
+import entity.Tiket;
+
 public class MainHelper {
 
 
@@ -25,6 +27,15 @@ public class MainHelper {
         System.out.print("Pilih menu: ");
 
         return InputHelper.inputInt("Pilih menu: ");
-
     }
+
+    /* ---------- INPUT TIKET BARU ---------- */
+    public static Tiket inputTiketBaru() {
+        String nama   = InputHelper.inputString("Masukan nama penumpang");
+        String rute   = RuteHelper.pilihRute();
+        String tanggal = InputHelper.inputTanggal("Masukkan tanggal keberangkatan");
+
+        return new Tiket(nama, rute, tanggal);
+    }
+
 }
