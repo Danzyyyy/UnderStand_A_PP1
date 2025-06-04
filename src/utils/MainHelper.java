@@ -55,4 +55,11 @@ public class MainHelper {
         list.insertMid(inputTiketBaru(), pos);
         System.out.println("Tiket berhasil ditambahkan (Mid)!");
     }
+
+    public static void updateTiket(ListStructure list) {
+        String id = InputHelper.inputString("Masukkan ID tiket yang ingin diupdate: ");
+        String rute = RuteHelper.pilihRute();
+        String tanggal = InputHelper.inputTanggal("Masukkan tanggal keberangkatan baru");
+        list.updateById(id, rute, tanggal);
+    }
 }
