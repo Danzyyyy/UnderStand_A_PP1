@@ -1,13 +1,9 @@
-import entity.Tiket;
 import services.ListStructure;
 import utils.InputHelper;
 import utils.MainHelper;
-import utils.RuteHelper;
 
-import java.util.Scanner;
 
 public class Main {
-    private static final Scanner scanner = new Scanner(System.in);
     private static final ListStructure list = new ListStructure();
 
     public static void main(String[] args) {
@@ -23,19 +19,16 @@ public class Main {
                 case 4 -> list.removeHead();
                 case 5 -> list.removeTail();
                 case 6 -> {
-                    System.out.print("Masukkan posisi tiket yang ingin dihapus: ");
-                    int pos = Integer.parseInt(scanner.nextLine());
+                    int pos = InputHelper.inputInt("Masukkan posisi tiket yang ingin dihapus: ");
                     list.removeMid(pos);
                 }
                 case 7 -> {
-                    System.out.print("Masukkan ID tiket: ");
-                    String id = scanner.nextLine();
+                    String id = InputHelper.inputString("Masukkan ID tiket: ");
                     list.searchById(id);
                 }
                 case 8 -> MainHelper.updateTiket(list);
                 case 9 -> {
-                    System.out.print("Masukkan ID tiket: ");
-                    String id = scanner.nextLine();
+                    String id = InputHelper.inputString("Masukkan ID tiket: ");
                     list.deleteById(id);
                 }
                 case 10 -> list.tampilkanSemua();
