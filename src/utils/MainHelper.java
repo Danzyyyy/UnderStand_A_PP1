@@ -38,4 +38,12 @@ public class MainHelper {
         return new Tiket(nama, rute, tanggal);
     }
 
+    /* ---------- TAMBAH TIKET ---------- */
+
+    private static void tambahTiketTail(ListStructure list) {
+        list.insertTail(inputTiketBaru());
+        System.out.println("Tiket berhasil ditambahkan (Tail)!");
+    }
+
+
 }
