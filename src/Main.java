@@ -32,7 +32,7 @@ public class Main {
                     String id = scanner.nextLine();
                     list.searchById(id);
                 }
-                case 8 -> updateTiket();
+                case 8 -> MainHelper.updateTiket(list);
                 case 9 -> {
                     System.out.print("Masukkan ID tiket: ");
                     String id = scanner.nextLine();
@@ -44,20 +44,13 @@ public class Main {
             }
         } while (pilih != 0);
     }
-
-
-
-
-
-
-
-
-
-    private static void updateTiket() {
-        System.out.print("Masukkan ID tiket yang ingin diupdate: ");
-        String id = scanner.nextLine();
-        String rute = RuteHelper.pilihRute();
-        String tanggal = InputHelper.inputTanggal("Masukkan tanggal keberangkatan baru");
-        list.updateById(id, rute, tanggal);
-    }
 }
+
+
+
+
+
+
+
+
+
