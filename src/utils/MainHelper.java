@@ -3,9 +3,6 @@ package utils;
 import entity.Tiket;
 import services.ListStructure;
 
-
-import entity.Tiket;
-
 public class MainHelper {
 
 
@@ -33,7 +30,7 @@ public class MainHelper {
     public static Tiket inputTiketBaru() {
         String nama   = InputHelper.inputString("Masukan nama penumpang: ");
         String rute   = RuteHelper.pilihRute();
-        String tanggal = InputHelper.inputTanggal("Masukkan tanggal keberangkatan");
+        String tanggal = DateHelper.pilihJadwal();
 
         return new Tiket(nama, rute, tanggal);
     }
@@ -58,7 +55,7 @@ public class MainHelper {
     public static void updateTiket(ListStructure list) {
         String id = InputHelper.inputString("Masukkan ID tiket yang ingin diupdate: ");
         String rute = RuteHelper.pilihRute();
-        String tanggal = InputHelper.inputTanggal("Masukkan tanggal keberangkatan baru");
+        String tanggal = DateHelper.pilihJadwal();
         list.updateById(id, rute, tanggal);
 
 

@@ -1,47 +1,9 @@
 package utils;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
 
 public class InputHelper {
     private static final Scanner scanner = new Scanner(System.in);
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-
-    public static String inputTanggal(String prompt) {
-        sdf.setLenient(false);
-        while (true) {
-            System.out.print(prompt + " (format: tanggal-bulan-tahun, Contoh: 03-01-2025): ");
-            String input = scanner.nextLine();
-            try {
-                Date date = sdf.parse(input);
-                Date today = sdf.parse(sdf.format(new Date())); // Normalisasi tanggal hari ini ke awal hari
-
-                // Hitung tanggal 7 hari dari sekarang
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(today);
-                calendar.add(Calendar.DAY_OF_YEAR, 7);
-                Date sevenDaysFromNow = calendar.getTime();
-
-                if (date.before(today)) {
-                    System.out.println("Tanggal tidak boleh sebelum hari ini. Coba lagi.");
-                    continue;
-                }
-
-                if (date.after(sevenDaysFromNow)) {
-                    System.out.println("Tanggal tidak boleh lebih dari 7 hari ke depan. Coba lagi.");
-                    continue;
-                }
-
-                return sdf.format(date);
-            } catch (ParseException e) {
-                System.out.println("Format tidak valid. Coba lagi.");
-            }
-        }
-    }
-
 
     public static String inputString(String prompt) {
         while (true) {
