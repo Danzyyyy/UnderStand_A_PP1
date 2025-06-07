@@ -16,8 +16,7 @@ public class MainHelper {
         System.out.println("3. Tampilkan Daftar Tiket");
         System.out.println("4. Cari Tiket Berdasarkan ID");
         System.out.println("5. Update Tiket Berdasarkan ID");
-        System.out.println("6. Simpan Data ke CSV");          // NEW
-        System.out.println("7. Muat Data dari CSV");          // NEW
+        System.out.println("6. Muat Data dari CSV");
         System.out.println("0. Keluar");
         return InputHelper.inputInt("Pilih menu: ");
     }
@@ -67,8 +66,7 @@ public class MainHelper {
     public static void tambahTiketExecutive(ListStructure list) {
         list.insertHead(inputTiketBaru("Executive"));
         System.out.println("Tiket Executive berhasil ditambahkan (Head)!");
-        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
-        CSVHelper.simpanKeCSV(daftarTiket);
+        saveToCSV(list);
     }
 
     public static void tambahTiketBusiness(ListStructure list) {
@@ -84,15 +82,13 @@ public class MainHelper {
             list.insertMid(inputTiketBaru("Business"), pos);
             System.out.println("Tiket Business berhasil ditambahkan di posisi " + pos + "!");
         }
-        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
-        CSVHelper.simpanKeCSV(daftarTiket);
+        saveToCSV(list);
     }
 
     public static void tambahTiketEconomy(ListStructure list) {
         list.insertTail(inputTiketBaru("Economy"));
         System.out.println("Tiket Economy berhasil ditambahkan (Tail)!");
-        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
-        CSVHelper.simpanKeCSV(daftarTiket);
+        saveToCSV(list);
     }
 
     /* ---------- UPDATE TIKET ---------- */
@@ -101,8 +97,7 @@ public class MainHelper {
         String rute = RuteHelper.pilihRute();
         String tanggal = DateHelper.pilihJadwal();
         list.updateById(id, rute, tanggal);
-        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
-        CSVHelper.simpanKeCSV(daftarTiket);
+        saveToCSV(list);
     }
 
     /* ---------- HAPUS TIKET ---------- */
@@ -112,8 +107,7 @@ public class MainHelper {
         } else {
             System.out.println("Gagal menghapus tiket dari depan (list kosong).");
         }
-        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
-        CSVHelper.simpanKeCSV(daftarTiket);
+
     }
 
     public static void deleteTiketMid(ListStructure list) {
@@ -123,8 +117,7 @@ public class MainHelper {
         } else {
             System.out.println("Posisi tidak valid atau tiket tidak ditemukan.");
         }
-        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
-        CSVHelper.simpanKeCSV(daftarTiket);
+        saveToCSV(list);
     }
 
     public static void deleteTiketTail(ListStructure list) {
@@ -133,8 +126,7 @@ public class MainHelper {
         } else {
             System.out.println("Gagal menghapus tiket dari belakang (list kosong).");
         }
-        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
-        CSVHelper.simpanKeCSV(daftarTiket);
+        saveToCSV(list);
     }
 
     public static void deleteTiketById(ListStructure list) {
@@ -144,17 +136,11 @@ public class MainHelper {
         } else {
             System.out.println("Tiket dengan ID " + id + " tidak ditemukan.");
         }
-        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
-        CSVHelper.simpanKeCSV(daftarTiket);
+        saveToCSV(list);
     }
 
     // NEW: Save current tickets to CSV
     public static void saveToCSV(ListStructure list) {
-        if (list.isEmpty()) {
-            System.out.println("Tidak ada data tiket untuk disimpan.");
-            return;
-        }
-
         // Convert linked list to array list for CSV operations
         List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
         CSVHelper.simpanKeCSV(daftarTiket);
