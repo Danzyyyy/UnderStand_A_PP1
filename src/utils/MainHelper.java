@@ -132,7 +132,7 @@ public class MainHelper {
 
     public static void deleteTiketTail(ListStructure list) {
         if (list.removeTail()) {
-            System.out.println("Tiket economy berhasil dihapus.");
+            System.out.println("Tiket Economy berhasil dihapus.");
         } else {
             System.out.println("Gagal menghapus tiket economy.");
         }
