@@ -57,9 +57,11 @@ public class MainHelper {
         String nama   = InputHelper.inputString("Masukan nama penumpang: ");
         String rute   = RuteHelper.pilihRute();
         String tanggal = DateHelper.pilihJadwal();
+        receiptTiket(nama, rute, tanggal, tipe);
 
         return new Tiket(nama, rute, tanggal, tipe);
     }
+    
 
     /* ---------- TAMBAH TIKET SESUAI TIPE ---------- */
     public static void tambahTiketExecutive(ListStructure list) {
@@ -89,6 +91,15 @@ public class MainHelper {
         System.out.println("Tiket Economy berhasil ditambahkan (Tail)!");
         saveToCSV(list);
     }
+
+    public static void receiptTiket(String nama, String rute, String tanggal, String tipe) {
+    System.out.println("\n=== RECEIPT PEMESANAN TIKET ===");
+    System.out.println("Nama         : " + nama);
+    System.out.println("Rute         : " + rute);
+    System.out.println("Tanggal      : " + tanggal);
+    System.out.println("Tipe Kursi   : " + tipe);
+    System.out.println("Tiket berhasil ditambahkan!\n");
+}
 
     /* ---------- UPDATE TIKET ---------- */
     public static void updateTiket(ListStructure list) {
@@ -155,4 +166,6 @@ public class MainHelper {
             System.out.println("Tidak ada data yang dimuat dari CSV.");
         }
     }
+    
+
 }
