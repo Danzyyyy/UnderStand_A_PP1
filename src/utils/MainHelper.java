@@ -23,9 +23,9 @@ public class MainHelper {
     /* ---------- Pilihan Menu Tambah ---------- */
     public static int pilihanMenuTambah() {
         System.out.println("\n=== MENU TAMBAH TIKET ===");
-        System.out.println("1. Tambah Tiket (Executive / Head)");
-        System.out.println("2. Tambah Tiket (Business / Mid)");
-        System.out.println("3. Tambah Tiket (Economy / Tail)");
+        System.out.println("1. Tambah Tiket Executive");
+        System.out.println("2. Tambah Tiket Business");
+        System.out.println("3. Tambah Tiket Economy");
         System.out.println("0. Kembali");
         return InputHelper.inputInt("Pilih menu: ");
     }
@@ -33,9 +33,9 @@ public class MainHelper {
     /* ---------- Pilihan Menu Hapus ---------- */
     public static int pilihanMenuHapus() {
         System.out.println("\n=== MENU HAPUS TIKET ===");
-        System.out.println("1. Hapus Tiket dari Depan (Head)");
-        System.out.println("2. Hapus Tiket dari Tengah (Mid)");
-        System.out.println("3. Hapus Tiket dari Belakang (Tail)");
+        System.out.println("1. Hapus Tiket Executive");
+        System.out.println("2. Hapus Tiket Business");
+        System.out.println("3. Hapus Tiket Economy");
         System.out.println("4. Hapus Tiket Berdasarkan ID");
         System.out.println("0. Kembali");
         return InputHelper.inputInt("Pilih menu: ");
@@ -66,7 +66,7 @@ public class MainHelper {
     /* ---------- TAMBAH TIKET SESUAI TIPE ---------- */
     public static void tambahTiketExecutive(ListStructure list) {
         list.insertHead(inputTiketBaru("Executive"));
-        System.out.println("Tiket Executive berhasil ditambahkan (Head)!");
+        System.out.println("Tiket Executive berhasil ditambahkan!");
         saveToCSV(list);
     }
 
@@ -88,7 +88,7 @@ public class MainHelper {
 
     public static void tambahTiketEconomy(ListStructure list) {
         list.insertTail(inputTiketBaru("Economy"));
-        System.out.println("Tiket Economy berhasil ditambahkan (Tail)!");
+        System.out.println("Tiket Economy berhasil ditambahkan");
         saveToCSV(list);
     }
 
@@ -113,9 +113,9 @@ public class MainHelper {
     /* ---------- HAPUS TIKET ---------- */
     public static void deleteTiketHead(ListStructure list) {
         if (list.removeHead()) {
-            System.out.println("Tiket dari depan (Head) berhasil dihapus.");
+            System.out.println("Tiket Executive berhasil dihapus.");
         } else {
-            System.out.println("Gagal menghapus tiket dari depan (list kosong).");
+            System.out.println("Gagal menghapus tiket executive.");
         }
         saveToCSV(list);
     }
@@ -132,9 +132,9 @@ public class MainHelper {
 
     public static void deleteTiketTail(ListStructure list) {
         if (list.removeTail()) {
-            System.out.println("Tiket dari belakang (Tail) berhasil dihapus.");
+            System.out.println("Tiket economy berhasil dihapus.");
         } else {
-            System.out.println("Gagal menghapus tiket dari belakang (list kosong).");
+            System.out.println("Gagal menghapus tiket economy.");
         }
         saveToCSV(list);
     }
