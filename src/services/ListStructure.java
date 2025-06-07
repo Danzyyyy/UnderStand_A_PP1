@@ -41,28 +41,34 @@ public class ListStructure {
         curNode.setNext(newNode);
     }
 
-    public void removeHead() {
+    public boolean removeHead() {
         if (head != null) {
             head = head.getNext();
+            return true;
         }
+        return false;
     }
 
-    public void removeTail() {
-        if (head == null || head.getNext() == null) {
+    public boolean removeTail() {
+        if (head == null) {
+            return false;
+        }
+        if (head.getNext() == null) {
             head = null;
-            return;
+            return true;
         }
         Node curNode = head;
         while (curNode.getNext().getNext() != null) {
             curNode = curNode.getNext();
         }
         curNode.setNext(null);
+        return true;
     }
 
-    public void removeMid(int posNode) {
-        if (posNode <= 1 || head == null) {
-            removeHead();
-            return;
+    public boolean removeMid(int posNode) {
+        if (head == null) return false;
+        if (posNode <= 1) {
+            return removeHead();
         }
         Node curNode = head;
         int i = 1;
@@ -72,10 +78,12 @@ public class ListStructure {
         }
         if (curNode.getNext() != null) {
             curNode.setNext(curNode.getNext().getNext());
+            return true;
         }
+        return false;
     }
 
-    public void deleteById(String id) {
+    public boolean deleteById(String id) {
         Node curNode = head, prev = null;
         while (curNode != null) {
             if (curNode.getData().getId().equals(id)) {
@@ -84,13 +92,12 @@ public class ListStructure {
                 } else {
                     prev.setNext(curNode.getNext());
                 }
-                System.out.println("Tiket dengan ID " + id + " berhasil dihapus.");
-                return;
+                return true;
             }
             prev = curNode;
             curNode = curNode.getNext();
         }
-        System.out.println("Tiket tidak ditemukan.");
+        return false;
     }
 
     public void searchById(String id) {
@@ -134,11 +141,40 @@ public class ListStructure {
         }
     }
 
+    public void tampilkanByTipe(String tipe) {
+        Node curNode = head;
+        boolean ditemukan = false;
+        System.out.println("\nDaftar Tiket Tipe: " + tipe);
+        while (curNode != null) {
+            if (curNode.getData().getTipe().equalsIgnoreCase(tipe)) {
+                tampilkanTiket(curNode.getData());
+                ditemukan = true;
+            }
+            curNode = curNode.getNext();
+        }
+        if (!ditemukan) System.out.println("Tidak ada tiket dengan tipe tersebut.");
+    }
+
+    public int getSize() {
+        int count = 0;
+        Node current = head;
+        while (current != null) {
+            count++;
+            current = current.getNext();
+        }
+        return count;
+    }
+
+    public boolean isEmpty() {
+        return head == null;
+    }
+
     private void tampilkanTiket(Tiket tiket) {
         System.out.println("------------------------------");
         System.out.println("ID Tiket : " + tiket.getId());
         System.out.println("Nama     : " + tiket.getNama());
         System.out.println("Rute     : " + tiket.getRute());
         System.out.println("Tanggal  : " + tiket.getTanggal());
+        System.out.println("Tipe     : " + tiket.getTipe());
     }
 }

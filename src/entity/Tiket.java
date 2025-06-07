@@ -7,12 +7,14 @@ public class Tiket {
     private String nama;
     private String rute;
     private String tanggal;
+    private String tipe;
 
-    public Tiket(String nama, String rute, String tanggal) {
+    public Tiket(String nama, String rute, String tanggal, String tipe) {
         this.id = IdGenerator.generateId();
         this.nama = nama;
         this.rute = rute;
         this.tanggal = tanggal;
+        this.tipe = tipe;
     }
 
     public String getId() {
@@ -27,10 +29,10 @@ public class Tiket {
     public String getTanggal() {
         return tanggal;
     }
-
-    public void setNama(String nama) {
-        this.nama = nama;
+    public String getTipe() {
+        return tipe;
     }
+
     public void setRute(String rute) {
         this.rute = rute;
     }

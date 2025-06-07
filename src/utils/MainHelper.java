@@ -5,59 +5,126 @@ import services.ListStructure;
 
 public class MainHelper {
 
-
-    /* ---------- MENU PILIHAN ---------- */
-
-    public static int menuPilih() {
-        System.out.println("\n=== MENU PEMESANAN TIKET TRAVEL ===");
-        System.out.println("1. Tambah Tiket (Tail)");
-        System.out.println("2. Tambah Tiket (Head)");
-        System.out.println("3. Tambah Tiket (Mid)");
-        System.out.println("4. Hapus Tiket (Head)");
-        System.out.println("5. Hapus Tiket (Tail)");
-        System.out.println("6. Hapus Tiket (Mid)");
-        System.out.println("7. Cari Tiket (berdasarkan ID)");
-        System.out.println("8. Update Tiket (berdasarkan ID)");
-        System.out.println("9. Hapus Tiket (berdasarkan ID)");
-        System.out.println("10. Tampilkan Semua Tiket");
+    /* ---------- Pilihan Menu Utama ---------- */
+    public static int pilihanMenuUtama() {
+        System.out.println("\n=== SELAMAT DATANG DI TRAVEL UNDER STAND ===");
+        System.out.println("\n=== MENU UTAMA PEMESANAN TIKET ===");
+        System.out.println("1. Tambah Pemesanan Tiket");
+        System.out.println("2. Hapus Pemesanan Tiket");
+        System.out.println("3. Tampilkan Daftar Tiket");
+        System.out.println("4. Cari Tiket Berdasarkan ID");
+        System.out.println("5. Update Tiket Berdasarkan ID");
         System.out.println("0. Keluar");
-        System.out.print("Pilih menu: ");
+        return InputHelper.inputInt("Pilih menu: ");
+    }
 
+    /* ---------- Pilihan Menu Tambah ---------- */
+    public static int pilihanMenuTambah() {
+        System.out.println("\n=== MENU TAMBAH TIKET ===");
+        System.out.println("1. Tambah Tiket (Executive / Head)");
+        System.out.println("2. Tambah Tiket (Business / Mid)");
+        System.out.println("3. Tambah Tiket (Economy / Tail)");
+        System.out.println("0. Kembali");
+        return InputHelper.inputInt("Pilih menu: ");
+    }
+
+    /* ---------- Pilihan Menu Hapus ---------- */
+    public static int pilihanMenuHapus() {
+        System.out.println("\n=== MENU HAPUS TIKET ===");
+        System.out.println("1. Hapus Tiket dari Depan (Head)");
+        System.out.println("2. Hapus Tiket dari Tengah (Mid)");
+        System.out.println("3. Hapus Tiket dari Belakang (Tail)");
+        System.out.println("4. Hapus Tiket Berdasarkan ID");
+        System.out.println("0. Kembali");
+        return InputHelper.inputInt("Pilih menu: ");
+    }
+
+    /* ---------- Pilihan Menu Tampilkan ---------- */
+    public static int pilihanMenuTampilkan() {
+        System.out.println("\n=== MENU TAMPILKAN DAFTAR TIKET ===");
+        System.out.println("1. Semua Tiket");
+        System.out.println("2. Tiket Executive");
+        System.out.println("3. Tiket Business");
+        System.out.println("4. Tiket Economy");
+        System.out.println("0. Kembali");
         return InputHelper.inputInt("Pilih menu: ");
     }
 
     /* ---------- INPUT TIKET BARU ---------- */
-    public static Tiket inputTiketBaru() {
+    public static Tiket inputTiketBaru(String tipe) {
         String nama   = InputHelper.inputString("Masukan nama penumpang: ");
         String rute   = RuteHelper.pilihRute();
         String tanggal = DateHelper.pilihJadwal();
 
-        return new Tiket(nama, rute, tanggal);
+        return new Tiket(nama, rute, tanggal, tipe);
     }
 
-    /* ---------- TAMBAH TIKET ---------- */
-    public static void tambahTiketTail(ListStructure list) {
-        list.insertTail(inputTiketBaru());
-        System.out.println("Tiket berhasil ditambahkan (Tail)!");
+    /* ---------- TAMBAH TIKET SESUAI TIPE ---------- */
+    public static void tambahTiketExecutive(ListStructure list) {
+        list.insertHead(inputTiketBaru("Executive"));
+        System.out.println("Tiket Executive berhasil ditambahkan (Head)!");
     }
 
-    public static void tambahTiketHead(ListStructure list) {
-        list.insertHead(inputTiketBaru());
-        System.out.println("Tiket berhasil ditambahkan (Head)!");
+    public static void tambahTiketBusiness(ListStructure list) {
+        if (list.isEmpty()) {
+            System.out.println("Tidak dapat menambahkan Tiket Business.");
+            System.out.println("Minimal harus ada satu Tiket Executive terlebih dahulu.");
+            return;
+        } else if (list.getSize() == 1) {
+            System.out.println("List hanya berisi 1 tiket, menambahkan sebagai Business di posisi ke-2.");
+            list.insertMid(inputTiketBaru("Business"), 2);
+        } else {
+            int pos = InputHelper.inputInt("Masukkan posisi penyisipan (antara 2 dan " + list.getSize() + "): ");
+            list.insertMid(inputTiketBaru("Business"), pos);
+            System.out.println("Tiket Business berhasil ditambahkan di posisi " + pos + "!");
+        }
     }
 
-    public static void tambahTiketMid(ListStructure list) {
-        int pos = InputHelper.inputInt("Masukkan posisi penyisipan: ");
-        list.insertMid(inputTiketBaru(), pos);
-        System.out.println("Tiket berhasil ditambahkan (Mid)!");
+    public static void tambahTiketEconomy(ListStructure list) {
+        list.insertTail(inputTiketBaru("Economy"));
+        System.out.println("Tiket Economy berhasil ditambahkan (Tail)!");
     }
 
+    /* ---------- UPDATE TIKET ---------- */
     public static void updateTiket(ListStructure list) {
         String id = InputHelper.inputString("Masukkan ID tiket yang ingin diupdate: ");
         String rute = RuteHelper.pilihRute();
         String tanggal = DateHelper.pilihJadwal();
         list.updateById(id, rute, tanggal);
+    }
 
+    /* ---------- HAPUS TIKET ---------- */
+    public static void deleteTiketHead(ListStructure list) {
+        if (list.removeHead()) {
+            System.out.println("Tiket dari depan (Head) berhasil dihapus.");
+        } else {
+            System.out.println("Gagal menghapus tiket dari depan (list kosong).");
+        }
+    }
 
+    public static void deleteTiketMid(ListStructure list) {
+        int pos = InputHelper.inputInt("Masukkan posisi tiket yang ingin dihapus (tengah): ");
+        if (list.removeMid(pos)) {
+            System.out.println("Tiket pada posisi " + pos + " berhasil dihapus.");
+        } else {
+            System.out.println("Posisi tidak valid atau tiket tidak ditemukan.");
+        }
+    }
+
+    public static void deleteTiketTail(ListStructure list) {
+        if (list.removeTail()) {
+            System.out.println("Tiket dari belakang (Tail) berhasil dihapus.");
+        } else {
+            System.out.println("Gagal menghapus tiket dari belakang (list kosong).");
+        }
+    }
+
+    public static void deleteTiketById(ListStructure list) {
+        String id = InputHelper.inputString("Masukkan ID tiket: ");
+        if (list.deleteById(id)) {
+            System.out.println("Tiket dengan ID " + id + " berhasil dihapus.");
+        } else {
+            System.out.println("Tiket dengan ID " + id + " tidak ditemukan.");
+        }
     }
 }
