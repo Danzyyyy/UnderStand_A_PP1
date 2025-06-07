@@ -1,58 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Menu Tiket</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap');
 
-        h1 {
-            color: #333;
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         .menu-container {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 200px auto;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
         }
 
-        button {
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .menu-button {
             display: block;
             width: 100%;
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 16px;
+            margin: 12px 0;
+            padding: 12px 0;
+            font-size: 1rem;
             background-color: #3498db;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
             cursor: pointer;
         }
 
-        button:hover {
+        .menu-button:hover {
             background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .menu-button:active {
+            transform: scale(0.98);
         }
     </style>
 </head>
 
 <body>
-<div class="menu-container">
-    <h1>Menu Tiket</h1>
-    <button onclick="window.location.href='tiket.php'">Tampilkan Semua Tiket</button>
-    <button onclick="window.location.href='tiketExecutive.php'">Tampilkan Tiket Executive</button>
-    <button onclick="window.location.href='tiketBusiness.php'">Tampilkan Tiket Businesss</button>
-    <button onclick="window.location.href='tiketEconomy.php'">Tampilkan Tiket Economy</button>
-
-</div>
+    <div class="menu-container">
+        <h1>Menu Tiket</h1>
+        <button class="menu-button" onclick="window.location.href='tiket.php'">Tampilkan Semua Tiket</button>
+        <button class="menu-button" onclick="window.location.href='tiket_executive.php'">Tiket Executive</button>
+        <button class="menu-button" onclick="window.location.href='tiket_business.php'">Tiket Business</button>
+        <button class="menu-button" onclick="window.location.href='tiket_economy.php'">Tiket Economy</button>
+    </div>
 </body>
 
 </html>

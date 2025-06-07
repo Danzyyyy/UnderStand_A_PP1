@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Daftar Tiket</title>
+    <title>Daftar Tiket Executive</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -93,7 +93,7 @@
     <div class="container">
         <div class="top-bar">
             <a href="index.php" class="button-back">← Kembali</a>
-            <h1>Halaman Daftar Tiket</h1>
+            <h1>Halaman Daftar Tiket Executive</h1>
         </div>
 
         <?php
@@ -104,6 +104,7 @@
         } else {
             if (($handle = fopen($file, 'r')) !== FALSE) {
                 $header = fgetcsv($handle);
+                $executiveFound = false;
 
                 if ($header) {
                     echo '<div class="cards">';
@@ -111,21 +112,29 @@
                     while (($data = fgetcsv($handle)) !== FALSE) {
                         $row = array_combine($header, $data);
 
-                        echo '<div class="card">';
+                        if (isset($row['Tipe']) && strtolower(trim($row['Tipe'])) === 'executive') {
+                            $executiveFound = true;
 
-                        if (isset($row['Nama'])) {
-                            echo '<h2>' . htmlspecialchars($row['Nama']) . '</h2>';
+                            echo '<div class="card">';
+
+                            if (isset($row['Nama'])) {
+                                echo '<h2>' . htmlspecialchars($row['Nama']) . '</h2>';
+                            }
+
+                            foreach ($row as $key => $value) {
+                                if ($key === 'Nama') continue;
+                                echo '<p><span class="label">' . htmlspecialchars($key) . ':</span> ' . htmlspecialchars($value) . '</p>';
+                            }
+
+                            echo '</div>';
                         }
-
-                        foreach ($row as $key => $value) {
-                            if ($key === 'Nama') continue;
-                            echo '<p><span class="label">' . htmlspecialchars($key) . ':</span> ' . htmlspecialchars($value) . '</p>';
-                        }
-
-                        echo '</div>';
                     }
 
                     echo '</div>';
+
+                    if (!$executiveFound) {
+                        echo "<p style='text-align:center; color:#999;'>Tidak ada tiket bertipe Executive ditemukan.</p>";
+                    }
                 } else {
                     echo "<p>File CSV kosong atau tidak valid.</p>";
                 }

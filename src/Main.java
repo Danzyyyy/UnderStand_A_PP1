@@ -6,6 +6,8 @@ public class Main {
     private static final ListStructure list = new ListStructure();
 
     public static void main(String[] args) {
+        MainHelper.loadFromCSV(list);
+
         int pilih;
         do {
             pilih = MainHelper.pilihanMenuUtama();
@@ -48,7 +50,6 @@ public class Main {
                     list.searchById(id);
                 }
                 case 5 -> MainHelper.updateTiket(list);
-                case 6 -> MainHelper.loadFromCSV(list); 
                 case 0 -> System.out.println("Keluar...");
                 default -> System.out.println("Menu tidak tersedia.");
             }

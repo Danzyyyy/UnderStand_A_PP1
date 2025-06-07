@@ -13,7 +13,7 @@ public class CSVHelper {
 
     private static final String FILE_PATH = "web/data/daftar_tiket.csv";
 
-    public static void simpanKeCSV(List<Tiket> daftarTiket) {
+    public static void save(List<Tiket> daftarTiket) {
         try (FileWriter writer = new FileWriter(FILE_PATH)) {
             writer.write("ID,Nama,Rute,Tanggal,Tipe\n");
 
@@ -32,7 +32,7 @@ public class CSVHelper {
         }
     }
 
-    public static List<Tiket> bacaDariCSV() {
+    public static List<Tiket> read() {
         List<Tiket> daftarTiket = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
             String line;
@@ -43,7 +43,6 @@ public class CSVHelper {
                 String[] values = line.split(",");
 
                 if (values.length == 5) {
-                    String id = values[0];
                     String nama = values[1];
                     String rute = values[2];
                     String tanggal = values[3];

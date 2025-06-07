@@ -185,10 +185,8 @@ public class ListStructure {
         return daftarTiket;
     }
 
-    // NEW: Method to clear all data (useful when loading from CSV)
     public void clearAll() {
         head = null;
-        System.out.println("Semua data tiket telah dihapus.");
     }
 
     private void tampilkanTiket(Tiket tiket) {

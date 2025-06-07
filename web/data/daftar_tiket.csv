@@ -1,2 +1,8 @@
 ID,Nama,Rute,Tanggal,Tipe
-TKT001,wildan,Bandung - Indramayu,09-06-2025,Executive
+TKT007,faj,Bandung - Bogor,11-06-2025,Executive
+TKT001,nanang,Bandung - Bogor,07-06-2025,Executive
+TKT002,fajri,Bandung - Bogor,07-06-2025,Executive
+TKT003,fauzan,Bandung - Cicalengka,08-06-2025,Business
+TKT004,raihan,Bandung - Bogor,07-06-2025,Business
+TKT005,wildan,Bandung - Indramayu,09-06-2025,Executive
+TKT006,maman,Bandung - Bogor,10-06-2025,Economy
