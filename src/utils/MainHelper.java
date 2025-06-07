@@ -117,7 +117,7 @@ public class MainHelper {
         } else {
             System.out.println("Gagal menghapus tiket dari depan (list kosong).");
         }
-
+        saveToCSV(list);
     }
 
     public static void deleteTiketMid(ListStructure list) {

@@ -1,8 +1,9 @@
 ID,Nama,Rute,Tanggal,Tipe
-TKT007,faj,Bandung - Bogor,11-06-2025,Executive
-TKT001,nanang,Bandung - Bogor,07-06-2025,Executive
-TKT002,fajri,Bandung - Bogor,07-06-2025,Executive
-TKT003,fauzan,Bandung - Cicalengka,08-06-2025,Business
-TKT004,raihan,Bandung - Bogor,07-06-2025,Business
-TKT005,wildan,Bandung - Indramayu,09-06-2025,Executive
-TKT006,maman,Bandung - Bogor,10-06-2025,Economy
+TKT002,susanti,Purwakarta - Bandung,10-06-2025,Business
+TKT003,faj,Bandung - Bogor,11-06-2025,Executive
+TKT004,nanang,Bandung - Bogor,07-06-2025,Executive
+TKT005,fajri,Bandung - Bogor,07-06-2025,Executive
+TKT006,fauzan,Bandung - Cicalengka,08-06-2025,Business
+TKT007,raihan,Bandung - Bogor,07-06-2025,Business
+TKT008,wildan,Bandung - Indramayu,09-06-2025,Executive
+TKT009,maman,Bandung - Bogor,10-06-2025,Economy
