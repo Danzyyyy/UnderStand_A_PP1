@@ -3,6 +3,9 @@ package services;
 import entity.Tiket;
 import entity.Node;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ListStructure {
     private Node head;
 
@@ -167,6 +170,25 @@ public class ListStructure {
 
     public boolean isEmpty() {
         return head == null;
+    }
+
+    // NEW: Method to get all tickets as ArrayList for CSV operations
+    public List<Tiket> getAllTickets() {
+        List<Tiket> daftarTiket = new ArrayList<>();
+        Node curNode = head;
+
+        while (curNode != null) {
+            daftarTiket.add(curNode.getData());
+            curNode = curNode.getNext();
+        }
+
+        return daftarTiket;
+    }
+
+    // NEW: Method to clear all data (useful when loading from CSV)
+    public void clearAll() {
+        head = null;
+        System.out.println("Semua data tiket telah dihapus.");
     }
 
     private void tampilkanTiket(Tiket tiket) {

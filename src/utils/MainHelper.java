@@ -3,6 +3,8 @@ package utils;
 import entity.Tiket;
 import services.ListStructure;
 
+import java.util.List;
+
 public class MainHelper {
 
     /* ---------- Pilihan Menu Utama ---------- */
@@ -14,6 +16,8 @@ public class MainHelper {
         System.out.println("3. Tampilkan Daftar Tiket");
         System.out.println("4. Cari Tiket Berdasarkan ID");
         System.out.println("5. Update Tiket Berdasarkan ID");
+        System.out.println("6. Simpan Data ke CSV");          // NEW
+        System.out.println("7. Muat Data dari CSV");          // NEW
         System.out.println("0. Keluar");
         return InputHelper.inputInt("Pilih menu: ");
     }
@@ -125,6 +129,43 @@ public class MainHelper {
             System.out.println("Tiket dengan ID " + id + " berhasil dihapus.");
         } else {
             System.out.println("Tiket dengan ID " + id + " tidak ditemukan.");
+        }
+    }
+
+    // NEW: Save current tickets to CSV
+    public static void saveToCSV(ListStructure list) {
+        if (list.isEmpty()) {
+            System.out.println("Tidak ada data tiket untuk disimpan.");
+            return;
+        }
+
+        // Convert linked list to array list for CSV operations
+        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
+        CSVHelper.simpanKeCSV(daftarTiket);
+    }
+
+    // NEW: Load tickets from CSV
+    public static void loadFromCSV(ListStructure list) {
+        System.out.println("\nPerhatian: Memuat data dari CSV akan mengganti semua data yang ada saat ini.");
+        String konfirmasi = InputHelper.inputString("Lanjutkan? (y/n): ");
+
+        if (konfirmasi.equalsIgnoreCase("y") || konfirmasi.equalsIgnoreCase("yes")) {
+            List<Tiket> daftarTiket = CSVHelper.bacaDariCSV();
+
+            if (!daftarTiket.isEmpty()) {
+                // Clear current list and load from CSV
+                list.clearAll(); // This method needs to be added to ListStructure
+
+                for (Tiket tiket : daftarTiket) {
+                    list.insertTail(tiket);
+                }
+
+                System.out.println("Data berhasil dimuat dari CSV. Total: " + daftarTiket.size() + " tiket.");
+            } else {
+                System.out.println("Tidak ada data yang dimuat dari CSV.");
+            }
+        } else {
+            System.out.println("Operasi dibatalkan.");
         }
     }
 }
