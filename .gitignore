@@ -32,3 +32,23 @@ bin/
 .DS_Store
 
 .class
+
+# Compiled class file
+*.class
+
+# Build output directories
+/out/
+/bin/
+/target/
+/build/
+
+# IDE specific files
+/.idea/
+*.iml
+
+# Log file
+*.log
+
+# Package Files
+*.jar
+*.war
