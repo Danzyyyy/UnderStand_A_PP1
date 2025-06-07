@@ -93,7 +93,7 @@
     <div class="container">
         <div class="top-bar">
             <a href="index.php" class="button-back">← Kembali</a>
-            <h1>Halaman Daftar Tiket Executive</h1>
+            <h1>Halaman Daftar Tiket Business</h1>
         </div>
 
         <?php
@@ -133,7 +133,7 @@
                     echo '</div>';
 
                     if (!$businessFound) {
-                        echo "<p style='text-align:center; color:#999;'>Tidak ada tiket bertipe Executive ditemukan.</p>";
+                        echo "<p style='text-align:center; color:#999;'>Tidak ada tiket bertipe Business ditemukan.</p>";
                     }
                 } else {
                     echo "<p>File CSV kosong atau tidak valid.</p>";
