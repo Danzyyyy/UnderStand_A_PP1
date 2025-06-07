@@ -67,6 +67,8 @@ public class MainHelper {
     public static void tambahTiketExecutive(ListStructure list) {
         list.insertHead(inputTiketBaru("Executive"));
         System.out.println("Tiket Executive berhasil ditambahkan (Head)!");
+        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
+        CSVHelper.simpanKeCSV(daftarTiket);
     }
 
     public static void tambahTiketBusiness(ListStructure list) {
@@ -82,11 +84,15 @@ public class MainHelper {
             list.insertMid(inputTiketBaru("Business"), pos);
             System.out.println("Tiket Business berhasil ditambahkan di posisi " + pos + "!");
         }
+        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
+        CSVHelper.simpanKeCSV(daftarTiket);
     }
 
     public static void tambahTiketEconomy(ListStructure list) {
         list.insertTail(inputTiketBaru("Economy"));
         System.out.println("Tiket Economy berhasil ditambahkan (Tail)!");
+        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
+        CSVHelper.simpanKeCSV(daftarTiket);
     }
 
     /* ---------- UPDATE TIKET ---------- */
@@ -95,6 +101,8 @@ public class MainHelper {
         String rute = RuteHelper.pilihRute();
         String tanggal = DateHelper.pilihJadwal();
         list.updateById(id, rute, tanggal);
+        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
+        CSVHelper.simpanKeCSV(daftarTiket);
     }
 
     /* ---------- HAPUS TIKET ---------- */
@@ -104,6 +112,8 @@ public class MainHelper {
         } else {
             System.out.println("Gagal menghapus tiket dari depan (list kosong).");
         }
+        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
+        CSVHelper.simpanKeCSV(daftarTiket);
     }
 
     public static void deleteTiketMid(ListStructure list) {
@@ -113,6 +123,8 @@ public class MainHelper {
         } else {
             System.out.println("Posisi tidak valid atau tiket tidak ditemukan.");
         }
+        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
+        CSVHelper.simpanKeCSV(daftarTiket);
     }
 
     public static void deleteTiketTail(ListStructure list) {
@@ -121,6 +133,8 @@ public class MainHelper {
         } else {
             System.out.println("Gagal menghapus tiket dari belakang (list kosong).");
         }
+        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
+        CSVHelper.simpanKeCSV(daftarTiket);
     }
 
     public static void deleteTiketById(ListStructure list) {
@@ -130,6 +144,8 @@ public class MainHelper {
         } else {
             System.out.println("Tiket dengan ID " + id + " tidak ditemukan.");
         }
+        List<Tiket> daftarTiket = list.getAllTickets(); // This method needs to be added to ListStructure
+        CSVHelper.simpanKeCSV(daftarTiket);
     }
 
     // NEW: Save current tickets to CSV

@@ -48,8 +48,7 @@ public class Main {
                     list.searchById(id);
                 }
                 case 5 -> MainHelper.updateTiket(list);
-                case 6 -> MainHelper.saveToCSV(list);  // NEW: Save to CSV
-                case 7 -> MainHelper.loadFromCSV(list); // NEW: Load from CSV
+                case 6 -> MainHelper.loadFromCSV(list); // NEW: Load from CSV
                 case 0 -> System.out.println("Keluar...");
                 default -> System.out.println("Menu tidak tersedia.");
             }
