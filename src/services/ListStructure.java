@@ -9,6 +9,11 @@ import java.util.List;
 public class ListStructure {
     private Node head;
 
+    //konstruktor
+    public ListStructure() {
+        head = null;
+    }
+
     public void insertTail(Tiket data) {
         Node newNode = new Node(data);
         if (head == null) {
