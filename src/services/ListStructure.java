@@ -177,7 +177,6 @@ public class ListStructure {
         return head == null;
     }
 
-    // NEW: Method to get all tickets as ArrayList for CSV operations
     public List<Tiket> getAllTickets() {
         List<Tiket> daftarTiket = new ArrayList<>();
         Node curNode = head;

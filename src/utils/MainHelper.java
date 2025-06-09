@@ -33,9 +33,9 @@ public class MainHelper {
     /* ---------- Pilihan Menu Hapus ---------- */
     public static int pilihanMenuHapus() {
         System.out.println("\n=== MENU HAPUS TIKET ===");
-        System.out.println("1. Hapus Tiket Executive");
-        System.out.println("2. Hapus Tiket Business");
-        System.out.println("3. Hapus Tiket Economy");
+        System.out.println("1. Hapus Tiket dari Depan (Head)");
+        System.out.println("2. Hapus Tiket dari Tengah (Mid)");
+        System.out.println("3. Hapus Tiket dari Belakang (Tail)");
         System.out.println("4. Hapus Tiket Berdasarkan ID");
         System.out.println("0. Kembali");
         return InputHelper.inputInt("Pilih menu: ");
@@ -113,9 +113,9 @@ public class MainHelper {
     /* ---------- HAPUS TIKET ---------- */
     public static void deleteTiketHead(ListStructure list) {
         if (list.removeHead()) {
-            System.out.println("Tiket Executive berhasil dihapus.");
+            System.out.println("Tiket di bagian depan berhasil dihapus.");
         } else {
-            System.out.println("Gagal menghapus tiket executive.");
+            System.out.println("Gagal menghapus tiket. Daftar tiket mungkin kosong.");
         }
         saveToCSV(list);
     }
@@ -132,9 +132,9 @@ public class MainHelper {
 
     public static void deleteTiketTail(ListStructure list) {
         if (list.removeTail()) {
-            System.out.println("Tiket Economy berhasil dihapus.");
+            System.out.println("Tiket di bagian belakang berhasil dihapus.");
         } else {
-            System.out.println("Gagal menghapus tiket economy.");
+            System.out.println("Gagal menghapus tiket. Daftar tiket mungkin kosong.");
         }
         saveToCSV(list);
     }
