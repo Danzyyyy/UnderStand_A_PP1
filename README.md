@@ -2,7 +2,28 @@
 
 Proyek ini merupakan aplikasi berbasis Java sederhana yang mensimulasikan pemesanan tiket travel menggunakan struktur data **Linked List** dan menyimpan datanya ke file `.csv`.
 
-<pre lang="markdown"> ## 📁 Struktur Folder ``` src/ ├── entity/ │ ├── Tiket.java // Class Tiket (model data tiket) │ └── Node.java // Node untuk Linked List ├── services/ │ └── ListStructure.java // Struktur Linked List untuk manajemen tiket ├── utils/ │ ├── InputHelper.java // Utility untuk input dari user │ ├── DateHelper.java // Utility untuk memilih tanggal keberangkatan │ └── CSVHelper.java // Utility untuk menyimpan dan membaca data ke/dari file CSV └── Main.java // Entry point program web/ ├── data/ │ └── daftar_tiket.csv // File penyimpanan data tiket ├── index.php // Tampilan halaman utama ├── tiket.php // Tampilan halaman semua tiket ├── tiket_business.php // Tampilan halaman tiket business ├── tiket_economy.php // Tampilan halaman tiket economy └── tiket_executive.php // Tampilan halaman tiket executive ``` </pre>
+## 📁 Struktur Folder
+
+src/
+├── entity/
+│ ├── Tiket.java // Class Tiket (model data tiket)
+│ └── Node.java // Node untuk Linked List
+├── services/
+│ └── ListStructure.java // Struktur Linked List untuk manajemen tiket
+├── utils/
+│ ├── InputHelper.java // Utility untuk input dari user
+│ ├── DateHelper.java // Utility untuk memilih tanggal keberangkatan
+│ └── CSVHelper.java // Utility untuk menyimpan dan membaca data ke/dari file CSV
+└── Main.java // Entry point program
+
+web/
+├── data/
+│ └── daftar_tiket.csv // File penyimpanan data tiket
+├── index.php // Tampilan halaman utama
+├── tiket.php // Tampilan halaman semua tiket
+├── tiket_business.php // Tampilan halaman tiket business
+├── tiket_economy.php // Tampilan halaman tiket economy
+└── tiket_executive.php // Tampilan halaman tiket executive
 
 ## ✅ Fitur Aplikasi
 
